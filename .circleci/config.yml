@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:latest
-    working_directory: /training
+    working_directory: ~/training
     steps:
       - checkout
       - setup_remote_docker:
