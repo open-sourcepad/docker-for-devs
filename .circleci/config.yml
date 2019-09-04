@@ -12,12 +12,12 @@ jobs:
           name: Build trainees docker image
           command: |
             TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
-            docker build -t dockerfordevs:$TAG ~/training/
+            docker build -t dockerfordevs:latest ~/training/
       - run:
           name: Run trainees docker image
           command: |
-            docker run --name dockerfordevs$TAG dockerfordevs:$TAG
+            docker run -d --name dockerfordevs dockerfordevs
       - run:
           name: Health check!
           command: |
-            echo | docker exec dockerfordevs$TAG curl -sb -H http://0.0.0.0
+            env ANSWER=$ANSWER sh ./checker.sh
