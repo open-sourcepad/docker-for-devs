@@ -1,3 +1,5 @@
+RESULT=`echo | docker run --name dockerfordevs dockerfordevs`
+
 echo "comparing ${RESULT}"
 echo "with ${ANSWER}"
 

@@ -14,10 +14,6 @@ jobs:
             TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
             docker build -t dockerfordevs:latest ~/training/
       - run:
-          name: Run trainees docker image
-          command: |
-            RESULT=`echo | docker run --name dockerfordevs dockerfordevs`
-      - run:
           name: Check the answers!
           command: |
-            env ANSWER=$ANSWER2 RESULT=$RESULT sh ./checker.sh
+            env ANSWER=$ANSWER2 sh ./checker.sh
