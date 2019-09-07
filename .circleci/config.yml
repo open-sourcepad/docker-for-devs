@@ -16,8 +16,8 @@ jobs:
       - run:
           name: Run trainees docker image
           command: |
-            docker run -d --name dockerfordevs dockerfordevs
+            RESULT=docker run --name dockerfordevs dockerfordevs
       - run:
-          name: Health check!
+          name: Check the answers!
           command: |
-            env ANSWER=$ANSWER sh ./checker.sh
+            env ANSWER=$ANSWER2 RESULT=$RESULT sh ./checker.sh
