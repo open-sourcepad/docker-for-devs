@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run trainees docker image
           command: |
-            RESULT="$(docker run --name dockerfordevs dockerfordevs)"
+            RESULT=`echo | docker run --name dockerfordevs dockerfordevs`
       - run:
           name: Check the answers!
           command: |
