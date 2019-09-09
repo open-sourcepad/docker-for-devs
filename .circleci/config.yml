@@ -20,4 +20,4 @@ jobs:
       - run:
           name: Health check!
           command: |
-            env ANSWER=$ANSWER sh ./checker.sh
+            ruby ./checker.rb $ANSWER
