@@ -2,9 +2,13 @@ class ApiController < ApplicationController
   def health_check
     render json: {
       ruby_version: "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}",
-      message: "#{Gem.loaded_specs["a"].version}",
-      platform: "#{RUBY_PLATFORM}"
+      platform: "#{RUBY_PLATFORM}",
+      dict_version: "#{get_dict}"
     }
+  end
+
+  def get_dict
+    `echo | dict --version`.split("\n")[0]
   end
 
 end
