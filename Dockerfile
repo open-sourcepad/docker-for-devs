@@ -1,6 +1,6 @@
-FROM 2.6.4-buster
+FROM ruby:2.6.4-buster
 
-COPY ./src /application
+COPY ./sourcepad.rb /application/opt
 WORKDIR /application
 
 CMD ["./sourcepad.rb"]
