@@ -1,6 +1,6 @@
 FROM ruby
 
 COPY ./input.txt /workspace/.
-WORKDIR /workspace
+WORKDIR workspace
 
 ENTRYPOINT ruby sourcepad.rb
