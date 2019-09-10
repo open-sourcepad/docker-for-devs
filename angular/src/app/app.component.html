@@ -1,0 +1,15 @@
+<h1>Hello Sourcepad!</h1>
+<br/>
+
+<h2>Api Version: {{api_version}}</h2>
+
+<div>
+  <h3>Find defintion</h3>
+  <input type="text" id='word'>
+  <button (click)="define()">Define</button>
+</div>
+
+<div *ngIf='definition'>
+  <h4>Definition</h4>
+    <p>{{definition}}</p>
+</div>
