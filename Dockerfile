@@ -1,7 +1,7 @@
 FROM ruby
 
-COPY input.txt /application/.
-COPY sourcepad.rb /application/.
-WORKDIR /application
+COPY input.txt /opt/.
+COPY sourcepad.rb /opt/.
+WORKDIR /opt
 
 CMD ruby sourcepad.rb
