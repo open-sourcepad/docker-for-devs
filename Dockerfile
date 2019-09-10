@@ -1,7 +1,7 @@
-FROM ruby:2.6.4-buster
+FROM ruby
 
-COPY sourcepad.rb /application
-COPY input.txt /application/opt/
-WORKDIR /application
+COPY input.txt /opt/.
+COPY sourcepad.rb /opt/.
+WORKDIR /opt
 
-CMD ["ruby", "sourcepad.rb"]
+ENTRYPOINT ruby sourcepad.rb
