@@ -1,7 +1,15 @@
 <h1>Hello Sourcepad!</h1>
 <br/>
 
-<h2>Api Version: {{api_version}}</h2>
+<h2>Local Api Version: {{api_version}}</h2>
+<h3 *ngIf='!doneScan'>searching for other docker based apis</h3>
+
+<div *ngIf='remoteApiList.length'>
+  <h1>Found APis</h1>
+  <h2 *ngFor='let r of remoteApiList'>
+    From: {{r["ip"]}} - Api Version: {{r["data"]["api_version"]}}
+  </h2>
+</div>
 
 <div>
   <h3>Find defintion</h3>
