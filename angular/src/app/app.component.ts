@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {range} from 'rxjs';
+import {switchMap, map} from 'rxjs/operators';
 
 
 @Component({
@@ -35,27 +37,18 @@ export class AppComponent {
   }
 
   scan() {
-    const prefix = 'http://192.168.1.';
-    let ip = 100;
-
-    while(ip < 256) {
-      this.http.get(`${prefix + ip}/health_check`).subscribe(e => {
-        if(e) {
-          if(e["api_version"]) {
-            this.remoteApiList.push( {
-              ip: `${prefix + ip}`,
-              data: e
-            })
+    range(100, 155)
+      .pipe(
+        map((idx) => {
+        const ip = `http://192.168.1.${idx}:3050/api/health_check`;
+        return this.http.get(ip);
+        })
+      ).subscribe(e => {
+        e.subscribe(r => {
+          if(r && r["api_version"]) {
+            this.remoteApiList.push(r)
           }
-        }
-      }, error => {
-
+        });
       });
-
-      ip++;
-    }
-
-    this.doneScan = true;
-
-  }
+   }
 }

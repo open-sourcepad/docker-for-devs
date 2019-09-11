@@ -10,7 +10,7 @@ services:
   backend:
     build: ./rails
     environment: 
-      - API_VERSION=1.2.3.4
+      - API_VERSION=
     ports:
       - "3050:3000"
     volumes:
