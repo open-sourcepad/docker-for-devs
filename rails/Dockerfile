@@ -1,6 +1,7 @@
 FROM ruby:2.6.4
 
-COPY . /app
+COPY ./Gemfile /app/Gemfile
+COPY ./Gemfile.lock /app/Gemfile.lock
 WORKDIR /app
 
 RUN apt-get update
