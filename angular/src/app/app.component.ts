@@ -15,7 +15,7 @@ export class AppComponent {
   }
 
   getFromApi() {
-    this.http.get('http://0.0.0.0:3000/api/health_check').subscribe(e => {
+    this.http.get('http://0.0.0.0:3050/api/health_check').subscribe(e => {
       this.api_version = e["api_version"];
     });
   }
@@ -24,7 +24,7 @@ export class AppComponent {
     this.definition = '';
     const value = document.getElementById('word')['value'];
 
-    this.http.get(`http://0.0.0.0:3000/api/define?word=${value}`).subscribe(e => {
+    this.http.get(`http://0.0.0.0:3050/api/define?word=${value}`).subscribe(e => {
       this.definition = e["definition"];
     });
   }
