@@ -4,9 +4,13 @@ services:
     build: ./angular
     ports:
       - "4200:4200"
+    volumes:
+      - ./angular:/app
   backend:
     build: ./rails
     environment: 
       - API_VERSION=1.2.3.4
     ports:
       - "3000:3000"
+    volumes:
+      - ./rails:/app
