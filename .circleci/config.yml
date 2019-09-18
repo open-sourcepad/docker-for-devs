@@ -1,23 +1,17 @@
 version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/ruby:latest
-    working_directory: ~/training
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Build trainees docker image
-          command: |
-            TAG=$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
-            docker build -t dockerfordevs:latest ~/training/
-      - run:
-          name: Run trainees docker image
-          command: |
-            docker run -d --name dockerfordevs dockerfordevs
-      - run:
-          name: Health check!
-          command: |
-            ruby ./checker.rb $ANSWER
+  jobs:
+
+    build:
+      name: Deploy to Sourcepad ECS
+      working_directory: ~/training
+      docker:
+        - image: circleci/ruby:latest
+      steps:
+        - checkout
+        - run: script/ecs-deploy.sh staging
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy
+
